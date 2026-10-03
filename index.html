@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NAPO Payment</title>
+  <style>
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family:Arial,"Segoe UI",sans-serif;
+      background:#f5f5f5;
+      color:#111;
+      display:flex;
+      justify-content:center;
+    }
+    .page{width:100%;max-width:520px;padding:28px 16px 40px}
+    .card{
+      background:#fff;border-radius:24px;padding:26px 18px;
+      box-shadow:0 10px 35px rgba(0,0,0,.08)
+    }
+    .brand{text-align:center;font-size:34px;font-weight:800;letter-spacing:2px}
+    .subtitle{text-align:center;color:#666;margin:8px 0 24px;font-size:15px}
+    .section{
+      border:1px solid #e8e8e8;border-radius:18px;padding:16px;margin-top:14px;
+      background:#fff
+    }
+    .section h2{font-size:18px;margin:0 0 12px}
+    .row{
+      display:flex;align-items:center;gap:9px;
+      padding:10px 0;border-top:1px solid #eee;
+      direction:ltr
+    }
+    .row:first-of-type{border-top:0}
+    .number{flex:1;font-size:16px;font-weight:600;letter-spacing:.3px}
+    button{
+      border:0;border-radius:10px;padding:9px 13px;
+      background:#111;color:#fff;font-weight:700;cursor:pointer
+    }
+    button:active{transform:scale(.97)}
+    .footer{text-align:center;color:#888;font-size:12px;margin-top:22px}
+    .toast{
+      position:fixed;left:50%;bottom:25px;transform:translateX(-50%) translateY(20px);
+      background:#111;color:#fff;padding:11px 17px;border-radius:12px;
+      opacity:0;pointer-events:none;transition:.25s;font-size:14px
+    }
+    .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="card">
+      <div class="brand">NAPO</div>
+      <div class="subtitle">Payment • Tap or Scan to Pay</div>
+
+      <section class="section">
+        <h2>🔵 InstaPay</h2>
+        <div class="row"><span class="number">01119223416</span><button onclick="copyNumber('01119223416')">نسخ</button></div>
+        <div class="row"><span class="number">01156534460</span><button onclick="copyNumber('01156534460')">نسخ</button></div>
+        <div class="row"><span class="number">01118147515</span><button onclick="copyNumber('01118147515')">نسخ</button></div>
+      </section>
+
+      <section class="section">
+        <h2>🔴 Vodafone Cash</h2>
+        <div class="row"><span class="number">01033620417</span><button onclick="copyNumber('01033620417')">نسخ</button></div>
+        <div class="row"><span class="number">01008776889</span><button onclick="copyNumber('01008776889')">نسخ</button></div>
+        <div class="row"><span class="number">01063840987</span><button onclick="copyNumber('01063840987')">نسخ</button></div>
+        <div class="row"><span class="number">01022063112</span><button onclick="copyNumber('01022063112')">نسخ</button></div>
+      </section>
+
+      <section class="section">
+        <h2>🟢 Etisalat Cash</h2>
+        <div class="row"><span class="number">01119223416</span><button onclick="copyNumber('01119223416')">نسخ</button></div>
+        <div class="row"><span class="number">01156534460</span><button onclick="copyNumber('01156534460')">نسخ</button></div>
+        <div class="row"><span class="number">01118147515</span><button onclick="copyNumber('01118147515')">نسخ</button></div>
+        <div class="row"><span class="number">01142518338</span><button onclick="copyNumber('01142518338')">نسخ</button></div>
+      </section>
+
+      <div class="footer">Powered by NAPO</div>
+    </div>
+  </main>
+
+  <div id="toast" class="toast">✓ تم نسخ الرقم</div>
+
+  <script>
+    async function copyNumber(number){
+      try {
+        await navigator.clipboard.writeText(number);
+      } catch(e) {
+        const input=document.createElement('input');
+        input.value=number;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('copy');
+        input.remove();
+      }
+      const toast=document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(()=>toast.classList.remove('show'),1600);
+    }
+  </script>
+</body>
+</html>
